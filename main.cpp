@@ -11,11 +11,6 @@
 #include <cstdlib>
 #include <unistd.h>
 
-// Settings
-const int numAgents = 3;
-const int numPushers = 3;
-const int numSmokers = 6;
-
 // Function Declarations
 void *AgentLogicTP(void*);
 void *AgentLogicPM(void*);
@@ -55,7 +50,7 @@ int main() {
     std::srand(std::time({}));
 
     // Create threads
-    pthread_t Agent[numAgents], Pusher[numPushers], Smoker[numSmokers];
+    pthread_t Agent[3], Pusher[3], Smoker[6];
     // Agent
     if (pthread_create(&Agent[0], NULL, AgentLogicTP, NULL)) { std::cout << "Error: Agent thread failed to create!"; }
     if (pthread_create(&Agent[1], NULL, AgentLogicPM, NULL)) { std::cout << "Error: Agent thread failed to create!"; }
@@ -73,15 +68,15 @@ int main() {
     if (pthread_create(&Smoker[5], NULL, SmokerLogicMatch, NULL)) { std::cout << "Error: Smoker thread failed to create!"; }
 
     // Join threads
-    for (int i = 0; i < numAgents; ++i) {
+    for (int i = 0; i < 3; ++i) {
         // Agent
         pthread_join(Agent[i], NULL);
     }
-    for (int i = 0; i < numPushers; ++i) {
+    for (int i = 0; i < 3; ++i) {
         // Pusher
         pthread_join(Pusher[i], NULL);
     }
-    for (int i = 0; i < numSmokers; ++i) {
+    for (int i = 0; i < 6; ++i) {
         // Smoker
         pthread_join(Smoker[i], NULL);
     }
