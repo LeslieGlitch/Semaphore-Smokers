@@ -1,3 +1,9 @@
+# VSCode
+.vscode/
+
+# Compiled program
+main
+
 # Prerequisites
 *.d
 
