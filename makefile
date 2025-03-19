@@ -13,18 +13,9 @@ clean:
 	rm -f main *.o
 
 # Link object files together
-main: main.o Smoker.o Pusher.o Agent.o
-	${CC} ${CFLAGS2} -o main main.o Smoker.o Pusher.o Agent.o
+main: main.o
+	${CC} ${CFLAGS2} -o main main.o
 
 # Compile each file to an object
 main.o: main.cpp
 	${CC} ${CFLAGS1} -o main.o main.cpp
-
-Smoker.o: Smoker.cpp
-	${CC} ${CFLAGS1} -o Smoker.o Smoker.cpp
-
-Pusher.o: Pusher.cpp
-	${CC} ${CFLAGS1} -o Pusher.o Pusher.cpp
-
-Agent.o: Agent.cpp
-	${CC} ${CFLAGS1} -o Agent.o Agent.cpp

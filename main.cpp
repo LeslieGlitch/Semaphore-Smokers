@@ -7,20 +7,22 @@
 #include <iostream>
 #include <pthread.h>
 #include <mutex>
-#include "Agent.h"
-#include "Pusher.h"
-#include "Smoker.h"
 
+// Settings
 const int numAgents = 3;
 const int numPushers = 3;
 const int numSmokers = 6;
 
+// Function Declarations
+void *AgentLogic(void*);
+void *PusherLogic(void*);
+void *SmokerLogic(void*);
+
 int main() {
-    std::cout << "Cigarette Smokers' Problem\n";
+    std::cout << "\nCigarette Smokers' Problem\n";
 
     // Create threads
     pthread_t Agent[numAgents], Pusher[numPushers], Smoker[numSmokers];
-    //int AgentInt[3], PusherInt[3], SmokerInt[6];
     for (int i = 0; i < numAgents; ++i) {
         // Agent
         if (pthread_create(&Agent[i], NULL, AgentLogic, NULL)) { std::cout << "Error: Agent thread failed to create!"; }
@@ -50,3 +52,19 @@ int main() {
 
     return 0;
 }
+
+void *AgentLogic(void*) {
+    std::cout << "Agent test!\n";
+    return (void*) NULL;
+}
+
+void *PusherLogic(void*) {
+    std::cout << "Pusher test!\n";
+    return (void*) NULL;
+}
+
+void *SmokerLogic(void*) {
+    std::cout << "Smoker test!\n";
+    return (void*) NULL;
+}
+
