@@ -233,7 +233,8 @@ void *SmokerLogicMatch(void*) {
         matchSem.lock();
         std::cout << "Match Smoker smoked a cigarrette\n";
         agentSem.unlock();
-        usleep(5000);
+        // Sleep for 3-5 seconds
+        usleep(3000 + (std::rand() % 2000));
     }
 
     std::cout << "Match Smoker complete\n";
