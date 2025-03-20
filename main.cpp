@@ -86,6 +86,8 @@ int main() {
 
 void *AgentLogicTP(void*) {
     for (int i = 0; i < 6; ++i) {
+        // Sleep for 100-200 milliseconds
+        usleep(100000 + (std::rand() % 100000));
         agentSem.lock();
         // Set out Tobacco and Paper
         std::cout << "Agent set out Tobacco and Paper\n";
@@ -98,6 +100,8 @@ void *AgentLogicTP(void*) {
 
 void *AgentLogicPM(void*) {
     for (int i = 0; i < 6; ++i) {
+        // Sleep for 100-200 milliseconds
+        usleep(100000 + (std::rand() % 100000));
         agentSem.lock();
         // Set out Paper and Match
         std::cout << "Agent set out Paper and Match\n";
@@ -110,6 +114,8 @@ void *AgentLogicPM(void*) {
 
 void *AgentLogicMT(void*) {
     for (int i = 0; i < 6; ++i) {
+        // Sleep for 100-200 milliseconds
+        usleep(100000 + (std::rand() % 100000));
         agentSem.lock();
         // Set out Match and Tobacco
         std::cout << "Agent set out Match and Tobacco\n";
@@ -209,7 +215,8 @@ void *SmokerLogicTobacco(void*) {
         tobaccoSem.lock();
         std::cout << "Tobacco Smoker smoked a cigarrette\n";
         agentSem.unlock();
-        usleep(5000);
+        // Sleep for 30-50 milliseconds
+        usleep(30000 + (std::rand() % 20000));
     }
 
     std::cout << "Tobacco Smoker complete\n";
@@ -221,7 +228,8 @@ void *SmokerLogicPaper(void*) {
         paperSem.lock();
         std::cout << "Paper Smoker smoked a cigarrette\n";
         agentSem.unlock();
-        usleep(5000);
+        // Sleep for 30-50 milliseconds
+        usleep(30000 + (std::rand() % 20000));
     }
 
     std::cout << "Paper Smoker complete\n";
@@ -233,8 +241,8 @@ void *SmokerLogicMatch(void*) {
         matchSem.lock();
         std::cout << "Match Smoker smoked a cigarrette\n";
         agentSem.unlock();
-        // Sleep for 3-5 seconds
-        usleep(3000 + (std::rand() % 2000));
+        // Sleep for 30-50 milliseconds
+        usleep(30000 + (std::rand() % 20000));
     }
 
     std::cout << "Match Smoker complete\n";
